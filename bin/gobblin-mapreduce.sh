@@ -75,6 +75,10 @@ do
       JOB_CONFIG_FILE="$2"
       shift
       ;;
+    --prop)
+      GOBBLIN_CONFIG_FILE="$2"
+      shift
+      ;;
     --projectversion)
       GOBBLIN_VERSION="$2"
       shift
@@ -194,7 +198,8 @@ done
 export HADOOP_USER_CLASSPATH_FIRST=true
 export HADOOP_CLASSPATH=$GOBBLIN_DEP_JARS:$HADOOP_CLASSPATH
 
-GOBBLIN_CONFIG_FILE=$FWDIR_CONF/gobblin-mapreduce.properties
+
+# GOBBLIN_CONFIG_FILE=$FWDIR_CONF/gobblin-mapreduce.properties
 
 JT_COMMAND=$([ -z $JOB_TRACKER_URL ] && echo "" || echo "-jt $JOB_TRACKER_URL")
 FS_COMMAND=$([ -z $FS_URL ] && echo "" || echo "-fs $FS_URL")
